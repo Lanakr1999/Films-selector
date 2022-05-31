@@ -1,0 +1,20 @@
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza"
+            [(ngModel)]="inputValue">
+  </mat-form-field>
+
+  <h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<button mat-button>Basic</button>
+
+<h1>{{inputValue}}</h1>
