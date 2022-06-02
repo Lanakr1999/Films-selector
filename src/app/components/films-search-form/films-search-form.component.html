@@ -1,3 +1,12 @@
-<input matInput placeholder="Ex. Pizza" [(ngModel)]="inputValue">
+<input matInput placeholder="Ex. Shrek" [(ngModel)]="inputValue">
 
-<button mat-button>Basic</button>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let type of types" [value]="type.value" (click)="activeSelector(type.value)">
+      {{type.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-button (click)="getFilms()">Find</button>

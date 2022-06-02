@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { IFilm } from './shared/model/films-app.model';
 import { FilmsService } from './shared/service/films.service';
 
@@ -9,9 +9,17 @@ import { FilmsService } from './shared/service/films.service';
 })
 export class AppComponent {
 
+  films: IFilm[] = [];
+  filmsGot: boolean = false;
   constructor(){}
 
   ngOnInit() {
 
+  }
+
+  getFilms(films: IFilm[]) {
+    this.filmsGot = true;
+    console.log(films);
+    return this.films = films;
   }
 }

@@ -38,3 +38,9 @@ export interface IFilm {
   Website: string,
   Response: string
 }
+
+export interface IFilmResponse{
+  Response: string,
+  Search: [IFilm],
+  totalResults: string
+}

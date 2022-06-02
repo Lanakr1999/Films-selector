@@ -1,1 +1,8 @@
-<app-films-search-form></app-films-search-form>
+<app-films-search-form (sendFilms)="getFilms($event)"></app-films-search-form>
+
+
+<div class="films-container" *ngIf="filmsGot">
+  <app-film-item *ngFor="let film of films"
+                  [film]="film">
+  </app-film-item>
+</div>
