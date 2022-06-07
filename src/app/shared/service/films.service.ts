@@ -16,4 +16,7 @@ export class FilmsService {
   getFilmsByTitle(title: string, type: string): Observable<IFilmResponse> {
     return this.http.get<IFilmResponse>(`${API_URL}/?&apikey=${API_KEY}&s=${title}&type=${type}`);
   }
+  getFilmByID(id: string): Observable<IFilm> {
+    return this.http.get<IFilm>(`${API_URL}/?apikey=${API_KEY}&i=${id}`);
+  }
 }

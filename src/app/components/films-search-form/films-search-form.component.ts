@@ -20,8 +20,10 @@ export class FilmsSearchFormComponent implements OnInit {
     {value: 'episode', viewValue: 'Episode'},
   ]
 
-  inputValue: string = '';
-  selectorValue: string = '';
+  select: any = 'movie';
+
+  inputValue: string = 'shrek';
+  selectorValue: string = 'movie';
   films: IFilm[] = [];
   filmsResponse!: IFilmResponse;
   @Output() sendFilms = new EventEmitter<IFilm[]>();
@@ -29,6 +31,7 @@ export class FilmsSearchFormComponent implements OnInit {
   constructor(private filmsService: FilmsService) { }
 
   ngOnInit(): void {
+    this.getFilms();
   }
 
   bringFilms(value: any) {
@@ -36,6 +39,7 @@ export class FilmsSearchFormComponent implements OnInit {
   }
 
   getFilms(): void {
+    // this.activeSelector(this.selectorValue)
     this.filmsService.getFilmsByTitle(this.inputValue, this.selectorValue).subscribe((filmsResponse: IFilmResponse) => {
       this.filmsResponse = filmsResponse;
       this.films = this.filmsResponse.Search;
@@ -43,9 +47,10 @@ export class FilmsSearchFormComponent implements OnInit {
     })
   }
 
-  activeSelector(type: string){
-    this.selectorValue = type;
-  }
+  // activeSelector(event: any){
+  //   this.select = event.target.value;
+  //   console.log(this.select);
+  // }
 
 
 

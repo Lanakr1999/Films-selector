@@ -1,8 +1,19 @@
+<header>
+  <img src="https://angular.io/assets/images/logos/angular/angular_whiteTransparent.svg" alt="">
+  <h2>Films seeker</h2>
+</header>
+
 <app-films-search-form (sendFilms)="getFilms($event)"></app-films-search-form>
 
+<div *ngIf="filmsGot" class="films-container">
 
-<div class="films-container" *ngIf="filmsGot">
   <app-film-item *ngFor="let film of films"
-                  [film]="film">
+                  [film]="film"
+                  class="item"
+                  (filmId)="getFilmId($event)">
   </app-film-item>
+
 </div>
+
+<app-film-description *ngIf="isDescriptionActive"
+                      [filmId]="filmId"></app-film-description>

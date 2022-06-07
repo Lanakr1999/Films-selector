@@ -10,7 +10,9 @@ import { FilmsService } from './shared/service/films.service';
 export class AppComponent {
 
   films: IFilm[] = [];
+  filmId!: IFilm;
   filmsGot: boolean = false;
+  isDescriptionActive: boolean = false;
   constructor(){}
 
   ngOnInit() {
@@ -21,5 +23,11 @@ export class AppComponent {
     this.filmsGot = true;
     console.log(films);
     return this.films = films;
+  }
+
+  getFilmId(filmId: IFilm) {
+    this.filmId = filmId;
+    this.isDescriptionActive = true;
+    console.log(filmId);
   }
 }

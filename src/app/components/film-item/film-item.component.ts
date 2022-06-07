@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IFilm} from "../../shared/model/films-app.model";
+import {FilmsService} from "../../shared/service/films.service";
 
 @Component({
   selector: 'app-film-item',
@@ -9,10 +10,21 @@ import {IFilm} from "../../shared/model/films-app.model";
 export class FilmItemComponent implements OnInit {
 
   @Input() film!: IFilm;
+  @Output() filmId = new EventEmitter<IFilm>();
 
-  constructor() { }
+  filmById!: IFilm;
+
+  constructor(private filmsService: FilmsService) { }
 
   ngOnInit(): void {
+  }
+
+
+  getFilmById(filmId: IFilm, id:string): void {
+    this.filmsService.getFilmByID(id).subscribe((filmById: IFilm) => {
+      this.filmById = filmById;
+      this.filmId.emit(filmId);
+    });
   }
 
 

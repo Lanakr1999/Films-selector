@@ -1,4 +1,11 @@
+<div class="container" (click)="getFilmById(film, film.imdbID)">
+  <div class="img-container">
+    <img src={{film.Poster}} alt="">
+  </div>
+  <div class="info-container">
+    <p>{{film.Title}}</p>
+    <p>{{film.Type}}</p>
+    <p>{{film.Year}}</p>
+  </div>
+</div>
 
-<h2>{{film.Title}}</h2>
-<h2>{{film.Type}}</h2>
-<h2>{{film.Actors}}</h2>
